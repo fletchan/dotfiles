@@ -60,6 +60,12 @@ function! WinMove(key)
     endif
 endfunction
 
+" Adjust window size key bindings
+nmap <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nmap <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nmap <Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nmap <Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+ 
 " Plugin Options
 
 " airline options
