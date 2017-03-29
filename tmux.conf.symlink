@@ -24,10 +24,9 @@ set -g base-index 1
 setw -g pane-base-index 1
 
 # Window title settings
-#set-option -g set-titles on
-#set-option -g set-titles-string "#T - #W"
 set-option -g automatic-rename off
 set-option -g allow-rename off
+
 # enable mouse support for switching panes/windows
 setw -g mouse on
 
@@ -37,7 +36,7 @@ setw -g mouse on
 bind r source-file ~/.tmux.conf \; display "Config Reloaded!"
 
 # Resize panes
-bind j resize-pane -D 10
-bind k resize-pane -U 10
-bind l resize-pane -L 10
-bind h resize-pane -R 10
+bind -r j resize-pane -D 10
+bind -r k resize-pane -U 10
+bind -r l resize-pane -L 10
+bind -r h resize-pane -R 10
