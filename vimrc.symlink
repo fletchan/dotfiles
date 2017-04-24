@@ -34,13 +34,6 @@ set mouse=a
 set ttymouse=sgr
 set ttyfast
 
-" Show trailing whitespace
-:highlight ExtraWhitespace ctermbg=red guibg=red
-:syntax on
-:match ExtraWhitespace /\s\+$/
-:autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-
-" has to come after show trailing whitespace setting
 colorscheme onedark
 
 " Make pane navigation easier
@@ -67,7 +60,7 @@ nmap <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nmap <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nmap <Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nmap <Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
- 
+
 " Plugin Options
 
 " airline options
