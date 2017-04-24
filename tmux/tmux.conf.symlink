@@ -2,6 +2,7 @@
 
 # tmux display things in 256 colors
 #set -g default-terminal "tmux-256color-italic"
+source ~/.dotfiles/tmux/theme.sh
 
 # enable terminal compatability
 set-option -ga terminal-overrides ",tmux-256colot-italic:Tc"
