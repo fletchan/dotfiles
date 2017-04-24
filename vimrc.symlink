@@ -31,6 +31,8 @@ set wildmenu                                  " enhanced command line completion
 set wildmode=list:longest                     " complete files like a shell
 
 set mouse=a
+set ttymouse=sgr
+set ttyfast
 
 " Show trailing whitespace
 :highlight ExtraWhitespace ctermbg=red guibg=red
