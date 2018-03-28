@@ -74,6 +74,9 @@ let g:airline#extensions#tabline#show_buffers = 0 " do not show open buffers in 
 set laststatus=2
 "autocmd FileType typescript nmap <buffer> <leader>h : <C-u>echo tsuquyomi#hint()<cr>
 
+" Nerdtree options
+map <C-n> :NERDTreeToggle<cr>
+
 " gitgutter options
 set updatetime=250
 
