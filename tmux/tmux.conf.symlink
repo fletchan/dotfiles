@@ -50,7 +50,11 @@ bind-key -n C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
 bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 
 # Resize panes
-bind -r j resize-pane -D 10
-bind -r k resize-pane -U 10
-bind -r l resize-pane -L 10
-bind -r h resize-pane -R 10
+bind-key -r j resize-pane -D 10
+bind-key -r k resize-pane -U 10
+bind-key -r l resize-pane -L 10
+bind-key -r h resize-pane -R 10
+
+# Open new windows in current directory
+bind-key '"' split-window -c "#{pane_current_path}"
+bind-key % split-window -h -c "#{pane_current_path}"
