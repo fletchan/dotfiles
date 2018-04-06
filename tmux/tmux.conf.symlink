@@ -58,3 +58,6 @@ bind-key -r h resize-pane -R 10
 # Open new windows in current directory
 bind-key '"' split-window -c "#{pane_current_path}"
 bind-key % split-window -h -c "#{pane_current_path}"
+
+# Synchronize panes
+bind-key S set-window-option synchronize-panes
