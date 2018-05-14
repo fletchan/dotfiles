@@ -9,10 +9,13 @@ tm_session_name="#[fg=$tm_color_feature,bold]$tm_icon #S"
 tm_date="#[fg=$tm_color_inactive] %R %d %b"
 tm_host="#[fg=$tm_color_feature,bold]#h"
 
+itunes_song="#[fs=$tm_color_feature]#(osascript -l JavaScript ~/.dotfiles/bin/itunes_current_track.js)"
+
 # statusbar settings and colors
 set-option -g status-style fg=$tm_color_active
 set -g status-left $tm_session_name' '
-set -g status-right $tm_date' '$tm_host
+set -g status-right-length 150
+set -g status-right $itunes_song' '$tm_date' '$tm_host
 
 # active window colors
 set-window-option -g window-status-current-style fg=$tm_color_active
