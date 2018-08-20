@@ -11,6 +11,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/tmp    " change location used for swp fil
 set encoding=utf-8
 set number                                    " set line numbers
 set hlsearch                                  " highlight search results
+set incsearch                                 " search for results starting at cursor
 set ignorecase                                " case insensitive searching
 set smartcase                                 " case-sensitive if expression contains a capital letter
 
