@@ -4,6 +4,9 @@
 #set -g default-terminal "tmux-256color-italic"
 source ~/.dotfiles/tmux/theme.sh
 
+# set mode-keys to vi
+set -g mode-keys vi
+
 # enable terminal compatability
 set-option -ga terminal-overrides ",tmux-256colot-italic:Tc"
 
