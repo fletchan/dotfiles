@@ -136,3 +136,8 @@ nmap <silent> <leader>s :SyntasticToggleMode<cr>
 command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 
 nmap <silent> <leader>c :set invnumber <bar> :GitGutterSignsToggle<cr>
+
+set foldmethod=syntax
+set foldlevelstart=99
+
+let javaScript_fold=1
