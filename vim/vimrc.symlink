@@ -77,6 +77,7 @@ set laststatus=2
 
 " Nerdtree options
 map <C-n> :NERDTreeToggle<cr>
+let NERDTreeShowBookmarks=1
 
 " gitgutter options
 set updatetime=250
