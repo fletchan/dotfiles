@@ -1,0 +1,117 @@
+" load vim plugin
+source ~/.vim/plugins.vim
+
+set nocompatible                              " not compatible with vi
+
+set history=1000                              " change history to 1000
+
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/tmp    " change location used for backup files
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/tmp    " change location used for swp files
+
+set encoding=utf-8
+set number                                    " set line numbers
+set hlsearch                                  " highlight search results
+set ignorecase                                " case insensitive searching
+set smartcase                                 " case-sensitive if expression contains a capital letter
+
+set clipboard=unnamed
+
+set expandtab
+set smarttab
+set tabstop=4                                 " the visible width of a tab
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+
+
+set autoindent                                " automatically set indent of new line
+set smartindent                               " Smart autoindenting when starting a new line after braces etc.
+
+set wildmenu                                  " enhanced command line completion
+set wildmode=list:longest                     " complete files like a shell
+
+set mouse=a
+
+" Show trailing whitespace
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:syntax on
+:match ExtraWhitespace /\s\+$/
+:autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+
+" has to come after show trailing whitespace setting
+colorscheme onedark
+
+" Make pane navigation easier
+map <silent> <C-h> :call WinMove('h')<cr>
+map <silent> <C-j> :call WinMove('j')<cr>
+map <silent> <C-k> :call WinMove('k')<cr>
+map <silent> <C-l> :call WinMove('l')<cr>
+
+function! WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfunction
+
+" Plugin Options
+
+" airline options
+let g:airline_powerline_fonts=1
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
+"let g:airline_theme='onedark'
+let g:airline#extensions#tabline#enabled = 1 " enable airline tabline
+let g:airline#extensions#tabline#tab_min_count = 2 " only show tabline if tabs are being used (more than 1 tab open)
+let g:airline#extensions#tabline#show_buffers = 0 " do not show open buffers in tabline
+set laststatus=2
+"autocmd FileType typescript nmap <buffer> <leader>h : <C-u>echo tsuquyomi#hint()<cr>
+
+" gitgutter options
+set updatetime=250
+
+" fzf options
+let g:fzf_layout = { 'down': '~25%' }
+
+if isdirectory(".git")
+    " if in a git project, use :GFiles
+    nmap <silent> <leader>t :GFiles<cr>
+else
+    " otherwise, use :FZF
+    nmap <silent> <leader>t :FZF<cr>
+endif
+nnoremap <silent> <C-t> :FZF -m <cr>
+nmap <silent> <leader>r :Buffers<cr>
+nmap <silent> <leader>e :FZF<cr>
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+nnoremap <silent> <Leader>C :call fzf#run({
+\   'source':
+\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+\   'sink':    'colo',
+\   'options': '+m',
+\   'left':    30
+\ })<CR>
+
+command! FZFMru call fzf#run({
+\  'source':  v:oldfiles,
+\  'sink':    'e',
+\  'options': '-m -x +s',
+\  'down':    '40%'})
+
+
